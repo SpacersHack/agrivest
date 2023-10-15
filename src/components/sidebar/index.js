@@ -11,11 +11,6 @@ const navItems = [
     icon: 'dashboard',
   },
   {
-    name: 'Properties',
-    path: 'properties',
-    icon: 'Properties',
-  },
-  {
     name: 'products',
     path: 'products',
     icon: 'products',

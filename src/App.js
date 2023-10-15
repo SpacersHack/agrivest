@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 
 import './App.css'
 import { ToastContainer } from 'react-toastify';
+import Products from './pages/products';
 
 
 
@@ -37,8 +38,7 @@ function App() {
         <Route path='/' element={<Sidebar />}>
           <Route index element={<Dashboard />} />
           <Route path='settings' element={<Settings />} />
-          <Route path='Properties' element={<p>Properties</p>} />
-          <Route path='Products' element={<p>Products</p>} />
+          <Route path='Products' element={<Products />} />
           <Route path='Customers' element={<p>Customers</p>} />
           <Route path='Reports' element={<p>Reports</p>} />
 

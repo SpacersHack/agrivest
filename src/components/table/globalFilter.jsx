@@ -13,7 +13,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
       <input
         type="search"
         name="search"
-        className="w-full py-2 px-4 outline-none block focus:outline-transparent shadow-md cursor-pointer rounded-2xl border-none"
+        className="w-full text-black py-2 px-4 outline-none block focus:outline-transparent shadow-md cursor-pointer rounded-2xl border-none"
         placeholder="Search transaction"
         value={value || ''}
         onChange={(e) => {
