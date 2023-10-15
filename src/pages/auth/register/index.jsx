@@ -28,7 +28,7 @@ const Register = () => {
       email: yup.string().email().required('Email field is required.'),
     }),
     onSubmit: (values) => {
-      navigate('/');
+      navigate('/login');
     },
   });
 

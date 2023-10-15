@@ -1,26 +1,63 @@
 import { Route, Routes } from 'react-router-dom';
-import Sidebar from './layout/sidebar';
-import Dashboard from './pages/dashboard';
-import Login from './pages/auth/login';
+import { Suspense, lazy } from 'react';
+
 import './App.css'
-import Register from './pages/auth/register';
+import { ToastContainer } from 'react-toastify';
+
+
+
+const LoadingScreen = () => (<p>loading</p>)
+const Loadable = (Component) => (props) => {
+
+
+  return (
+    <Suspense fallback={<LoadingScreen />}>
+      <Component {...props} />
+    </Suspense>
+  );
+};
+
 
 function App() {
-  return (
-    <Routes>
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/' element={<Sidebar />}>
-        <Route index element={<Dashboard />} />
-        <Route path='support' element={<p className='h-full w-full'>support</p>} />
-        <Route path='settings' element={<p className='h-full w-full'>settings</p>} />
-        <Route path='Properties' element={<p>Properties</p>} />
-        <Route path='Products' element={<p>Products</p>} />
-        <Route path='Customers' element={<p>Customers</p>} />
-        <Route path='Reports' element={<p>Reports</p>} />
 
-      </Route>
-    </Routes>
+
+  const Login = Loadable(lazy(() => import('./pages/auth/login')));
+  const Register = Loadable(lazy(() => import('./pages/auth/register')));
+
+
+  const Dashboard = Loadable(lazy(() => import('./pages/dashboard')));
+  const Sidebar = Loadable(lazy(() => import('./layout/sidebar')));
+  const Settings = Loadable(lazy(() => import('./pages/settings')));
+
+  return (
+    <>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/' element={<Sidebar />}>
+          <Route index element={<Dashboard />} />
+          <Route path='support' element={<p className='h-full w-full'>support</p>} />
+          <Route path='settings' element={<Settings />} />
+          <Route path='Properties' element={<p>Properties</p>} />
+          <Route path='Products' element={<p>Products</p>} />
+          <Route path='Customers' element={<p>Customers</p>} />
+          <Route path='Reports' element={<p>Reports</p>} />
+
+        </Route>
+      </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }
 

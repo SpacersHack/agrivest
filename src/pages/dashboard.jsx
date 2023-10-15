@@ -1,8 +1,8 @@
 import React from 'react';
-import LineChartView from '../components/chart/lineChart';
-import iconType from '../utils/iconType';
+import LineChartView from '../components/dashboard/chart/lineChart';
+import Overview from '../components/dashboard/overview';
+import Products from '../components/dashboard/products';
 
-// iconName = "currency" | "chart" | "percent"
 const overView = [
   {
     name: 'Total Income',
@@ -36,64 +36,15 @@ const Dashboard = () => {
       <div className="grid grid-cols-12 gap-6">
         <section className="col-span-12 lg:col-span-8">
           <article className="lg:flex items-center mb-6 gap-6">
-            <aside className="my-4 lg:my-0 bg-white py-3 px-2 rounded-lg w-full">
-              <div className="flex">
-                <p className="h-12 w-12 overflow-hidden flex justify-center items-center bg-gray-100 rounded-full">
-                  {iconType('currency')}
-                </p>
-                <p className="ml-3">
-                  <span className="block my-0 font-semibold text-[18px]">
-                    $5525
-                  </span>
-                  <span className="block text-[12px] text-gray-400 my-0">
-                    Total income
-                  </span>
-                </p>
-              </div>
-              <p className="h-2 w-full bg-gray-100 mt-6 rounded-lg"></p>
-            </aside>
-            <aside className="my-4 lg:my-0 bg-white py-3 px-2 rounded-lg w-full">
-              <div className="flex">
-                <p className="h-12 w-12 overfloe-hidden flex justify-center items-center bg-gray-100 rounded-full">
-                  {iconType('chart')}
-                </p>
-                <p className="ml-3">
-                  <span className="block my-0 font-semibold text-[18px]">
-                    $5525
-                  </span>
-                  <span className="block text-[12px] text-gray-400 my-0">
-                    Total Expense
-                  </span>
-                </p>
-              </div>
-              <p className="h-2 w-full bg-gray-100 mt-6 rounded-lg"></p>
-            </aside>
-            <aside className="my-4 lg:my-0 bg-white py-3 px-2 rounded-lg w-full">
-              <div className="flex">
-                <p className="h-12 w-12 overflow-hidden flex justify-center items-center bg-gray-100 rounded-full">
-                  {iconType('percent')}
-                </p>
-                <p className="ml-3">
-                  <span className="block my-0 font-semibold text-[18px]">
-                    $5525
-                  </span>
-                  <span className="block text-[12px] text-gray-400 my-0">
-                    Total profit
-                  </span>
-                </p>
-              </div>
-              <p className="h-2 w-full bg-gray-100 mt-6 rounded-lg"></p>
-            </aside>
+            {overView.map((view, id) => (
+              <Overview view={view} />
+            ))}
           </article>
           <article className=" bg-white rounded-lg py-3 px-2">
             <LineChartView />
           </article>
         </section>
-        <article className="col-span-12 lg:col-span-4 bg-white rounded-lg p-3">
-          <h3 className="my-3 capitalize text-lg font-semibold">
-            Top Products
-          </h3>
-        </article>
+        <Products />
       </div>
     </section>
   );
