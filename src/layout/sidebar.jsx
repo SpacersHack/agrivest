@@ -3,18 +3,10 @@ import { Outlet } from 'react-router-dom';
 import { SideBar } from '../components/sidebar';
 
 const Sidebar = () => {
-  const navItems = [
-    {
-      name: 'dashboard',
-      path: '/',
-      icon: '',
-    },
-  ];
-
   return (
-    <section className="w-screen h-screen">
+    <section className="w-screen h-screen overflow-hidden flex bg-zinc">
       <SideBar />
-      <main className="overflow-y-scroll">
+      <main className="overflow-y-scroll p-4 py-5 w-full font-poppins">
         <Outlet />
       </main>
     </section>
