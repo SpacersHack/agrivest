@@ -36,7 +36,6 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/' element={<Sidebar />}>
           <Route index element={<Dashboard />} />
-          <Route path='support' element={<p className='h-full w-full'>support</p>} />
           <Route path='settings' element={<Settings />} />
           <Route path='Properties' element={<p>Properties</p>} />
           <Route path='Products' element={<p>Products</p>} />

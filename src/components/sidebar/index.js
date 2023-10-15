@@ -28,7 +28,7 @@ const navItems = [
   {
     name: 'reports',
     path: 'reports',
-    icon: 'reports',
+    icon: 'help',
   },
 ];
 
@@ -37,11 +37,6 @@ const navFooter = [
     name: 'settings',
     path: 'settings',
     icon: 'settings',
-  },
-  {
-    name: 'support',
-    path: 'support',
-    icon: 'help',
   }
 ]
 
