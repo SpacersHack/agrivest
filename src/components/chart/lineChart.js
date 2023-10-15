@@ -62,7 +62,7 @@ const LineChartView = () => {
     <div className=''>
       <h3 className="my-3 md:ml-6 capitalize text-lg font-semibold">Sales Analytics</h3>
 
-      <ResponsiveContainer width={"100%"} height={360}>
+      <ResponsiveContainer width={"100%"} height={400}>
         <LineChart width={730} height={250} data={data}
           style={{ fontSize: 14 }}
           margin={{ top: 5, right: 10, left: 5, bottom: 0 }}>

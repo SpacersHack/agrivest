@@ -34,7 +34,7 @@ const Dashboard = () => {
         </p>
       </aside>
       <div className="grid grid-cols-12 gap-6">
-        <section className="col-span-12 lg:col-span-9">
+        <section className="col-span-12 lg:col-span-8">
           <article className="lg:flex items-center mb-6 gap-6">
             <aside className="my-4 lg:my-0 bg-white py-3 px-2 rounded-lg w-full">
               <div className="flex">
@@ -89,9 +89,9 @@ const Dashboard = () => {
             <LineChartView />
           </article>
         </section>
-        <article className="col-span-12 lg:col-span-3 bg-white rounded-lg p-3">
+        <article className="col-span-12 lg:col-span-4 bg-white rounded-lg p-3">
           <h3 className="my-3 capitalize text-lg font-semibold">
-            Top Properties
+            Top Products
           </h3>
         </article>
       </div>

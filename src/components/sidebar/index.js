@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardIcon from '../../assets/icons/dashboard'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import iconType from '../../utils/iconType';
 import cls from 'classnames'
 
@@ -42,16 +42,16 @@ const navFooter = [
     name: 'support',
     path: 'support',
     icon: 'help',
-  },
-  {
-    name: 'logout',
-    path: 'logout',
-    icon: 'logout',
-  },
+  }
 ]
 
 
 export const SideBar = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    navigate("/login")
+  }
   return (
     <header className="h-full bg-white w-[240px] shadow-md">
       <nav className="flex flex-col justify-between bg-white h-full">
@@ -88,6 +88,13 @@ export const SideBar = () => {
                 </NavLink>
               ))
             }
+            <li
+              className={"py-3 text-black px-5 my-2  flex items-center text-sm cursor-pointer"}
+              onClick={handleLogout}
+            >
+              {iconType("logout")}
+              <p className='mx-2 capitalize'>logout</p>
+            </li>
           </ul>
         </section>
       </nav>
