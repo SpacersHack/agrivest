@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <section className="w-screen h-screen overflow-hidden flex bg-zinc">
       <SideBar />
-      <main className="overflow-y-scroll p-4 py-5 w-full font-poppins">
+      <main className="overflow-y-scroll md:p-4 md:py-5 w-full font-poppins">
         <Outlet />
       </main>
     </section>
