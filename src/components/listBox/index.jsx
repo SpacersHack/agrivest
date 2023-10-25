@@ -20,7 +20,7 @@ export default function CategoryList({ handleCategory }) {
   }
 
   return (
-    <div className="fixed top-16 w-72">
+    <div className=" w-72 mt-14">
       <h3>Products by sellers</h3>
       <Listbox value={selected} onChange={handleSelectChange}>
         <div className="relative mt-1">

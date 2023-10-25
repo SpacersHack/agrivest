@@ -38,7 +38,7 @@ export const useGetProduct = (options = {}, values = {}) => {
   const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
-    setEnabled(true);
+    setEnabled(false);
   }, []);
 
   return useQuery(
