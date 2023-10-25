@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { TrashIcon } from '@heroicons/react/24/solid';
 import { CSVLink } from 'react-csv';
 import {
   useTable,
@@ -13,9 +14,8 @@ import PageCount from './pageCount';
 import cls from 'classnames';
 import { Checkbox } from './checkbox';
 import fromUnixTime from 'date-fns/fromUnixTime';
-import { TrashIcon } from '@heroicons/react/24/solid';
 
-const SellerTable = ({
+const UserTable = ({
   tableData = [],
   COLUMNS,
   handlePage,
@@ -96,7 +96,7 @@ const SellerTable = ({
     <section id="table" className="pt-4 px-4">
       <aside className="md:flex my-4 justify-between text-black items-center ">
         <h3 className="capitalize text-left w-[400px] flex whitespace-nowrap">
-          <p className="">sellers </p>
+          <p className="">Users </p>
         </h3>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       </aside>
@@ -191,4 +191,4 @@ const SellerTable = ({
   );
 };
 
-export default SellerTable;
+export default UserTable;

@@ -1,5 +1,5 @@
 import fromUnixTime from 'date-fns/fromUnixTime';
-export const sellerColumns = [
+export const userColumns = [
   {
     Header: 's/n',
     Footer: 'Id',
@@ -18,10 +18,6 @@ export const sellerColumns = [
     accessor: '_type',
   },
   {
-    Header: 'Address',
-    accessor: 'address',
-  },
-  {
     Header: 'Email',
     accessor: 'email',
   },
@@ -33,6 +29,14 @@ export const sellerColumns = [
         return <p className=" text-green-600 rounded-full p-1">verified</p>;
       }
       return <p className=" text-red-600 rounded-full p-1">not verified</p>;
+    },
+  },
+  {
+    Header: 'Date Created',
+    Footer: 'Date Created',
+    accessor: 'createdAt',
+    Cell: ({ value }) => {
+      return value?.slice(0, 10);
     },
   },
 ];

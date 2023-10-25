@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react';
 
 import './App.css'
 import { ToastContainer } from 'react-toastify';
-import Products from './pages/products';
+
 
 
 
@@ -30,6 +30,7 @@ function App() {
   const Sidebar = Loadable(lazy(() => import('./layout/sidebar')));
   const Settings = Loadable(lazy(() => import('./pages/settings')));
   const Customers = Loadable(lazy(() => import('./pages/customers')));
+  const Products = Loadable(lazy(() => import('./pages/products')));
 
   const token = localStorage.getItem("__token__");
   return (

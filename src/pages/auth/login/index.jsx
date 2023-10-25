@@ -25,17 +25,14 @@ const Login = () => {
     localStorage.setItem('__user__', JSON.stringify(data.user));
 
     toast.success(`Welcome ${data?.user.name}`);
-
-    setTimeout(() => {
-      // window.location.reload();
-      navigate('/');
-    }, 2000);
+    navigate('/');
   };
 
   const onError = (error) => {
     console.log({ error }, 'error');
     toast.error(error?.response?.data?.message);
   };
+
   const options = {
     onError,
     onSuccess,

@@ -50,7 +50,7 @@ export const SideBar = () => {
 
           <ul className="my-4 py-3 font-poppins">
             <h3 className=" uppercase px-5 mb-4  font-bold text-agrivest font-['Young_Serif']">
-              Agrivest
+              FarmCart
             </h3>
             {
               navItems.map((items, id) => (
