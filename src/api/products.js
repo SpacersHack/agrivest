@@ -25,3 +25,29 @@ export const useGetProducts = (options = {}) => {
     }
   );
 };
+
+export const _getProduct = async ({ queryKey }) => {
+  const { productId } = queryKey[1]
+  const response = await axios.get(`product/get-all-products-shop/${productId}`);
+  return response;
+};
+
+export const useGetProduct = (options = {}, values = {}) => {
+
+
+  const [enabled, setEnabled] = useState(true);
+
+  useEffect(() => {
+    setEnabled(true);
+  }, []);
+
+  return useQuery(
+    ["products", { ...values }], _getProduct,
+    {
+      enabled,
+      select: (data) => data?.data?.products,
+      ...options,
+    }
+  );
+};
+
