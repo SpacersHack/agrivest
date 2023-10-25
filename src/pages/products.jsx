@@ -4,11 +4,14 @@ import { useGetProduct } from '../api/products';
 
 const Products = () => {
   const [productId, setProductId] = useState('');
+  const [modalData, setModalData] = useState('');
+  const [visible, setVisible] = useState(false);
 
   const {
     data: products,
     isFetched,
     refetch,
+    isLoading,
   } = useGetProduct({}, { productId });
 
   const handleCategory = (Id) => {
@@ -16,7 +19,10 @@ const Products = () => {
     refetch();
   };
 
-  console.log(products);
+  const handleModalData = (product) => {
+    setModalData(product);
+  };
+
   return (
     <section>
       <CategoryList handleCategory={handleCategory} />
@@ -25,6 +31,7 @@ const Products = () => {
           products?.map((product) => (
             <aside
               key={product?.id}
+              onClick={() => handleModalData(product)}
               className="w-[300px] h-[350px] shadow-lg rounded-md overflow-hidden my-3 mr-3 cursor-pointer"
             >
               <div className="w-full h-[200px]">
@@ -50,11 +57,17 @@ const Products = () => {
           ))
         ) : (
           <p className="text-center w-full h-[300px] flex justify-center items-center">
-            <span>No products</span>
+            {isLoading ? (
+              <span>loading Products</span>
+            ) : (
+              <span>No products</span>
+            )}
           </p>
         )}
       </article>
-      {/* {isFetching && <p>Loading Product</p>} */}
+      <section className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-xl bg-white">
+        hi there
+      </section>
     </section>
   );
 };

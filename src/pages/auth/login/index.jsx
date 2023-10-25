@@ -63,7 +63,7 @@ const Login = () => {
       <section className=" bg-white col-span-12  flex justify-center items-center flex-col">
         <>
           <h3 className=" font-bold font-['Young_Serif'] text-agrivest text-4xl">
-            Agrivest
+            Farmcart
           </h3>
           <FormikProvider value={formik}>
             <form
@@ -92,11 +92,7 @@ const Login = () => {
                   error={errors?.password}
                 />
               </div>
-              <Button
-                isSubmitting={loading}
-                // handleClick={}
-                text={'login'}
-              />
+              <Button isSubmitting={loading} text={'login'} />
 
               <p className="w-full  text-black py-3 rounded-2xl uppercase text-sm cursor-pointer">
                 Dont have an account ?

@@ -58,6 +58,7 @@ const UpdateProfileForm = () => {
             type="text"
             className="w-full py-3 px-4 outline-none border-none focus:outline-none shadow-lg rounded-2xl"
             placeholder="John Doe"
+            value={!user?.phone ? '080 0000 000' : user.phone}
           />
           <p className="uppercase text-sm bg-white text-center translate-x-2 px-2">
             phone
@@ -68,6 +69,7 @@ const UpdateProfileForm = () => {
             type="text"
             className="w-full py-3 px-4 outline-none border-none focus:outline-none shadow-lg rounded-2xl"
             placeholder="John Doe"
+            value={!user?.gender ? 'Male' : user.gender}
           />
           <p className="uppercase text-sm bg-white text-center translate-x-2 px-2">
             Gender
