@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { ReactComponent as EyeSlash } from './eyeSlash.svg';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik, FormikProvider } from 'formik';
 import * as yup from 'yup';
 
@@ -9,25 +9,54 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Inputs from '../../../components/input';
 import Button from '../../../components/button';
+import { useLoginUser } from '../../../api/auth/login';
+import Cookies from 'js-cookie';
 
 const Login = () => {
-  const [username] = useState('');
+  const [email] = useState('');
   const [password] = useState('');
-  const location = useLocation();
   const navigate = useNavigate();
-  const [accountType, setAccountType] = useState('admin');
+
+  const onSuccess = (data) => {
+    const token = data?.token;
+    Cookies.set('__cookie__', token);
+    localStorage.setItem('__token__', token);
+
+    localStorage.setItem('__user__', JSON.stringify(data.user));
+
+    toast.success(`Welcome ${data?.user.name}`);
+
+    setTimeout(() => {
+      // window.location.reload();
+      navigate('/');
+    }, 2000);
+  };
+
+  const onError = (error) => {
+    console.log({ error }, 'error');
+    toast.error(error?.response?.data?.message);
+  };
+  const options = {
+    onError,
+    onSuccess,
+  };
+
+  const { mutate: loginUser, isLoading: loading } = useLoginUser(options);
 
   const formik = useFormik({
     initialValues: {
-      username,
+      email,
       password,
     },
     validationSchema: yup.object().shape({
-      username: yup.string().required('Above field cannot be blank.'),
+      email: yup
+        .string()
+        .email('invalid email format')
+        .required('Above field cannot be blank.'),
       password: yup.string().required('Above field is required.'),
     }),
     onSubmit: (values) => {
-      navigate('/');
+      loginUser(values);
     },
   });
 
@@ -47,12 +76,12 @@ const Login = () => {
               <div className="my-6">
                 <Inputs
                   type="text"
-                  name="username"
-                  displayName="username"
-                  value={values.username}
+                  name="email"
+                  displayName="email"
+                  value={values.email}
                   handleInputChange={setFieldValue}
                   handleBlur={handleBlur}
-                  error={errors?.username}
+                  error={errors?.email}
                 />
               </div>
               <div className="my-6">
@@ -67,7 +96,7 @@ const Login = () => {
                 />
               </div>
               <Button
-                // isSubmitting={adminLoading || merchantLoading}
+                isSubmitting={loading}
                 // handleClick={}
                 text={'login'}
               />

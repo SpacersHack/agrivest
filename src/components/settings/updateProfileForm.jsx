@@ -7,6 +7,7 @@ function classNames(...classes) {
 }
 
 const UpdateProfileForm = () => {
+  const user = JSON.parse(localStorage.getItem('__user__'));
   return (
     <Tab.Panel className={classNames('rounded-xl  px-6 py-4')}>
       <form>
@@ -34,6 +35,7 @@ const UpdateProfileForm = () => {
               type="text"
               className="w-full py-3 px-4 outline-none border-none focus:outline-none shadow-lg rounded-2xl"
               placeholder="John Doe"
+              value={user?.name}
             />
             <p className="uppercase text-sm bg-white text-center translate-x-2 px-2">
               fullname
@@ -44,6 +46,7 @@ const UpdateProfileForm = () => {
               type="text"
               className="w-full py-3 px-4 outline-none border-none focus:outline-none shadow-lg rounded-2xl"
               placeholder="John Doe"
+              value={user?.email}
             />
             <p className="uppercase text-sm bg-white text-center translate-x-2 px-2">
               email
